@@ -142,21 +142,6 @@ lakebase_writer = LakebaseForeachWriter(
 )
 ```
 
-## Production Recommendations
-
-1. **Use Databricks Secrets** for credentials instead of hardcoding:
-   ```python
-   db_password = dbutils.secrets.get(scope="my-scope", key="lakebase-password")
-   ```
-
-2. **Set checkpoint location** to a durable Volume path for exactly-once processing
-
-3. **Monitor the stream** using Spark UI or:
-   ```python
-   query.status
-   query.recentProgress
-   ```
-
 ## Troubleshooting
 
 | Issue | Solution |
@@ -166,6 +151,4 @@ lakebase_writer = LakebaseForeachWriter(
 | Schema mismatch errors | Update `message_schema` to match Kafka messages |
 | Slow writes | Increase `batch_size` or try `bulk-insert` mode |
 
-## License
-
-MIT
+Original Lakebase forEach Writer here - https://github.com/christophergrant/lakebase-foreachwriter/blob/main/src/lakebase_foreachwriter/LakebaseForeachWriter.py
